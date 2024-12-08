@@ -1,7 +1,16 @@
 import React from 'react';
 import { Heart, Calendar, Clock, User, Settings } from 'lucide-react';
 
-const CarCard = ({ car }) => {
+interface CarType {
+  name: string;
+  type: string;
+  price: string;
+  image: string;
+  mode: string;
+  capacity: string;
+  liked: boolean;
+}
+const CarCard: React.FC<{ car: CarType }> = ({ car }) => {
   return (
     <div className="bg-white p-4 rounded-lg shadow">
       <div className="flex justify-between items-start mb-4">
@@ -41,45 +50,54 @@ const CarCard = ({ car }) => {
   );
 };
 
-const JeepCard = ({ jeep }) => {
-    return (
-      <div className="bg-white p-4 rounded-lg shadow">
-        <div className="flex justify-between items-start mb-4">
-          <div>
-            <h3 className="font-semibold text-lg">{jeep.name}</h3>
-            <p className="text-sm text-gray-500">{jeep.type}</p>
-          </div>
-          <button className="text-red-500">
-            <Heart className={`h-5 w-5 ${jeep.liked ? 'fill-red-500' : ''}`} />
-          </button>
-        </div>
-        <div className="my-4">
-          <img src={jeep.image} alt={jeep.name} className="w-full h-40 object-contain" />
-        </div>
-        <div className="flex justify-between items-center mb-4">
-          <div className="flex space-x-4">
-            <div className="flex items-center text-gray-500">
-              <Settings className="h-4 w-4 mr-1" />
-              <span className="text-sm">{jeep.mode}</span>
-            </div>
-            <div className="flex items-center text-gray-500">
-              <User className="h-4 w-4 mr-1" />
-              <span className="text-sm">{jeep.capacity}</span>
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-between items-center">
-          <div>
-            <span className="font-bold">${jeep.price}</span>
-            <span className="text-gray-500">/day</span>
-          </div>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
-            Rent Now
-          </button>
-        </div>
-      </div>
-    );
-  };
+// interface JeepType {
+//   name: string;
+//   type: string;
+//   price: string;
+//   image: string;
+//   mode: string;
+//   capacity: string & number;
+//   liked: boolean;
+// }
+// const JeepCard = ({ jeep }: {jeep: JeepType}) => {
+//     return (
+//       <div className="bg-white p-4 rounded-lg shadow">
+//         <div className="flex justify-between items-start mb-4">
+//           <div>
+//             <h3 className="font-semibold text-lg">{jeep.name}</h3>
+//             <p className="text-sm text-gray-500">{jeep.type}</p>
+//           </div>
+//           <button className="text-red-500">
+//             <Heart className={`h-5 w-5 ${jeep.liked ? 'fill-red-500' : ''}`} />
+//           </button>
+//         </div>
+//         <div className="my-4">
+//           <img src={jeep.image} alt={jeep.name} className="w-full h-40 object-contain" />
+//         </div>
+//         <div className="flex justify-between items-center mb-4">
+//           <div className="flex space-x-4">
+//             <div className="flex items-center text-gray-500">
+//               <Settings className="h-4 w-4 mr-1" />
+//               <span className="text-sm">{jeep.mode}</span>
+//             </div>
+//             <div className="flex items-center text-gray-500">
+//               <User className="h-4 w-4 mr-1" />
+//               <span className="text-sm">{jeep.capacity}</span>
+//             </div>
+//           </div>
+//         </div>
+//         <div className="flex justify-between items-center">
+//           <div>
+//             <span className="font-bold">${jeep.price}</span>
+//             <span className="text-gray-500">/day</span>
+//           </div>
+//           <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+//             Rent Now
+//           </button>
+//         </div>
+//       </div>
+//     );
+//   };
 
 const HomeCarRent = () => {
   const cars = [

@@ -131,7 +131,7 @@ const CategoryCarRent = () => {
                 min="0"
                 max="100"
                 value={priceRange}
-                onChange={(e) => setPriceRange(e.target.value)}
+                onChange={(e) => setPriceRange(Number(e.target.value))}
                 className="w-full"
               />
               <div className="flex justify-between text-sm text-gray-600">
